@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
+  validates :username, presence: true
+  validates :username, uniqueness: { case_sensitive: false }
   has_many :comics
   has_many :writers, through: :comics
   has_many :artists, through: :comics
