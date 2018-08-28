@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     if !logged_in?
       erb :'/users/new_user'
     else
-      redirect '/comics'
+      redirect "/users/#{current_user.slug}"
     end
   end
 
@@ -15,11 +15,13 @@ class UsersController < ApplicationController
 
     if user.save
       session[:user_id] = user.id
-      redirect '/comics'
+      redirect "/users/#{user.slug}"
     else
       flash[:message] = "#{user.errors.full_messages.join(", ")}"
       redirect '/register'
     end
   end
+
+
 
 end
