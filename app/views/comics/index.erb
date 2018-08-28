@@ -1,4 +1,5 @@
 <h2>All Comics</h2>
+<p><a href="/comics/new">Add a new comic book!</a></p>
 <ul>
   <% @comics.sort_by {|obj| obj.name}.each do |comic| %>
     <li><a href="/comics/<%=comic.id%>"><%= comic.name %></a></li>
