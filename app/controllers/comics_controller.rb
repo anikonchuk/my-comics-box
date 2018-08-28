@@ -29,14 +29,11 @@ class ComicsController < ApplicationController
   end
 
   post '/comics' do
-    user = current_user
     comic = Comic.new(name: params[:name], notes: params[:notes])
-    writer = Writer.find_or_create_by(name: params[:writer])
-    artist = Artist.find_or_create_by(name: params[:artist])
+    comic.writer = Writer.find_or_create_by(name: params[:writer])
+    comic.artist = Artist.find_or_create_by(name: params[:artist])
+    comic.user = current_user
     if comic.save
-      user.comics << comic
-      writer.comics << comic
-      artist.comics << comic
       flash[:message] = "Your comic has been created!"
       redirect "/comics/#{comic.id}"
     else
