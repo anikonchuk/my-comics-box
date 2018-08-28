@@ -22,6 +22,14 @@ class UsersController < ApplicationController
     end
   end
 
+  get '/login' do
+    if !logged_in?
+      erb :'/users/sign_in'
+    else
+      redirect "/users/#{current_user.slug}"
+    end 
+  end
+
   get '/logout' do
     if logged_in?
       session.clear
