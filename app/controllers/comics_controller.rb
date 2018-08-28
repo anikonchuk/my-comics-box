@@ -9,6 +9,14 @@ class ComicsController < ApplicationController
     end
   end
 
+  get '/comics/new' do
+    if logged_in?
+      erb :'/comics/create'
+    else
+      redirect '/'
+    end
+  end
+
   get '/comics/:id' do
     if logged_in?
       @comic = Comic.find_by_id(params[:id])
