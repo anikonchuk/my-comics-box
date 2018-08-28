@@ -9,4 +9,13 @@ class ArtistsController < ApplicationController
     end
   end
 
+  get '/artists/:id' do
+    if logged_in?
+      @artist = Artist.find_by(id: params[:id])
+      erb :'/artists/show'
+    else
+      redirect '/'
+    end
+  end
+
 end
