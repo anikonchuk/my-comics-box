@@ -10,4 +10,16 @@ class UsersController < ApplicationController
     end
   end
 
+  post '/register' do
+    user = User.new(username: params[:username], password: params[:password])
+
+    if user.save
+      session[:user_id] = user.id
+      redirect '/comics'
+    else
+      flash[:message] = "#{user.errors.full_messages.join(", ")}"
+      redirect '/register'
+    end
+  end
+
 end
