@@ -1,0 +1,7 @@
+<h2><%= @user.username %>'s Comics Box</h2>
+<h3>Comics</h3>
+<ul>
+  <% @user.comics.each do |comic| %>
+    <li><a href="/comics/<%=comic.id%>"><%=comic.name%></a></li>
+  <% end %>
+</ul>
