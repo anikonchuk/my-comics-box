@@ -26,4 +26,19 @@ class ComicsController < ApplicationController
     end
   end
 
+  post '/comics' do
+    user = current_user
+    comic = Comic.new(name: params[:name], notes: params[:notes])
+    writer = Writer.find_or_create_by(name: params[:writer])
+    artist = Artist.find_or_create_by(name: params[:artist])
+    if comic.save
+      user.comics << comic
+      writer.comics << comic
+      artist.comics << comic
+      redirect "/comics/#{comic.id}"
+    else
+      redirect "/comics/new"
+    end
+  end
+
 end
