@@ -39,7 +39,16 @@ class UsersController < ApplicationController
     else
       flash[:message] = "Log In failed. Please try again"
       redirect '/login'
-    end 
+    end
+  end
+
+  get '/users/:slug' do
+    if logged_in?
+      @user = User.find_by_slug(params[:slug])
+      erb '/users/show'
+    else
+      redirect '/'
+    end
   end
 
   get '/logout' do
