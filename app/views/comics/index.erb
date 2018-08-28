@@ -1,1 +1,6 @@
-
+<h2>All Comics</h2>
+<ul>
+  <% @comics.sort_by {|obj| obj.name}.each do |comic| %>
+    <li><a href="/comics/<%=comic.id%>"><%= comic.name %></a></li>
+  <% end %>
+</ul>
