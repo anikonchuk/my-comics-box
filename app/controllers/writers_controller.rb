@@ -9,4 +9,13 @@ class WritersController < ApplicationController
     end
   end
 
+  get '/writers/:id' do
+    if logged_in?
+      @writer = Writer.find_by(id: params[:id])
+      erb :'/writers/show'
+    else
+      redirect '/'
+    end
+  end
+
 end
