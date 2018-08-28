@@ -1,3 +1,6 @@
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
 <h2><%= @comic.name %></h2>
 <h3>Writer</h3>
 <p><a href="/writers/<%=@comic.writer.id%>"><%= @comic.writer.name %></a></p>

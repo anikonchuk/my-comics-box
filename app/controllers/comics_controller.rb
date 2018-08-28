@@ -1,4 +1,6 @@
+require 'rack-flash'
 class ComicsController < ApplicationController
+  use Rack::Flash
 
   get '/comics' do
     if logged_in?
@@ -35,8 +37,10 @@ class ComicsController < ApplicationController
       user.comics << comic
       writer.comics << comic
       artist.comics << comic
+      flash[:message] = "Your comic has been created!"
       redirect "/comics/#{comic.id}"
     else
+      flash[:message] = "Your comic was not created. Please try again."
       redirect "/comics/new"
     end
   end
