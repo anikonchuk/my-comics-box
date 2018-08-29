@@ -1,6 +1,6 @@
-# My Comics Box
+# MyComicsBox
 
-Welcome to My Comics Box, a website where you can catalog your comic books. This website was built in Sinatra using the corneal gem.
+Welcome to MyComicsBox, a website where you can catalog your comic books. This website was built in Sinatra using the corneal gem.
 
 ## Installation
 
