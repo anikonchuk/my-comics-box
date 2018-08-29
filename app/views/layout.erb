@@ -17,7 +17,7 @@
     <div class="navigation">
       <% if logged_in? %>
         <a href="/logout">Log Out</a>
-        <a href="/users/<%=current_user.slug%>">My Home Page</a>
+        <a href="/users/<%= current_user.slug %>"><%= current_user.username %>'s Comics Box</a>
         <a href="/comics">All Comics</a>
         <a href="/writers">All Writers</a>
         <a href="/artists">All Artists</a>
