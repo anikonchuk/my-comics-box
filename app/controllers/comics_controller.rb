@@ -69,8 +69,22 @@ class ComicsController < ApplicationController
         flash[:message] = "There was a problem updating your comic. Please try again."
         redirect "/comics/#{comic.id}/edit"
       end
-    else
+    elsif logged_in?
       redirect "/comics/#{comic.id}"
+    else
+      redirect '/'
+    end
+  end
+
+  delete '/comics/:id' do
+    comic = Comic.find_by_id(params[:id])
+    if current_user == comic.user
+      comic.destroy
+      redirect "/users/#{current_user.slug}"
+    elsif logged_in?
+      redirect "/comics/#{comic.id}"
+    else
+      redirect '/'
     end
   end
 
