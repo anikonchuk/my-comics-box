@@ -3,20 +3,20 @@
 <h3>Comics</h3>
 <ul>
   <% @user.comics.sorted.each do |comic| %>
-    <li><a href="/comics/<%=comic.id%>"><%=comic.name%></a></li>
+    <li><a href="/comics/<%= comic.id %>"><%=comic.name%></a></li>
   <% end %>
 </ul>
 
 <h3>Writers</h3>
 <ul>
   <% @user.writers.sorted.uniq.each do |writer| %>
-    <li><a href="/writers/<%=writer.id%>"><%=writer.name%></a></li>
+    <li><a href="/writers/<%= writer.id %>"><%=writer.name%></a></li>
   <% end %>
 </ul>
 
 <h3>Artists</h3>
 <ul>
   <% @user.artists.sorted.uniq.each do |artist| %>
-    <li><a href="/artists/<%=artist.id%>"><%=artist.name%></a></li>
+    <li><a href="/artists/<%= artist.id %>"><%=artist.name%></a></li>
   <% end %>
 </ul>

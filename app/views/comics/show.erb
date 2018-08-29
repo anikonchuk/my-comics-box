@@ -3,10 +3,10 @@
 <% end %>
 <h2><%= @comic.name %></h2>
 <h3>Writer</h3>
-<p><a href="/writers/<%=@comic.writer.id%>"><%= @comic.writer.name %></a></p>
+<p><a href="/writers/<%= @comic.writer.id %>"><%= @comic.writer.name %></a></p>
 <h3>Artist</h3>
-<p><a href="/artists/<%=@comic.artist.id%>"><%= @comic.artist.name %></a></p>
+<p><a href="/artists/<%= @comic.artist.id %>"><%= @comic.artist.name %></a></p>
 <h4>Notes</h4>
 <p><%= @comic.notes %></p>
 <br>
-<p><em>This comic is in <a href="/users/<%=@comic.user.slug%>"><%= @comic.user.username %></a>'s Comics Box.</em></p>
+<p><em>This comic is in <a href="/users/<%= @comic.user.slug %>"><%= @comic.user.username %></a>'s Comics Box.</em></p>

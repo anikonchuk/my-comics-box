@@ -2,6 +2,6 @@
 <p><a href="/comics/new">Add a new comic book!</a></p>
 <ul>
   <% @comics.each do |comic| %>
-    <li><a href="/comics/<%=comic.id%>"><%= comic.name %></a></li>
+    <li><a href="/comics/<%= comic.id %>"><%= comic.name %></a></li>
   <% end %>
 </ul>

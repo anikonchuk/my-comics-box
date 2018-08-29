@@ -2,12 +2,12 @@
 <h3>Comics</h3>
 <ul>
   <% @artist.comics.sorted.uniq.each do |comic| %>
-    <li><a href="/comics/<%=comic.id%>"><%= comic.name %></a></li>
+    <li><a href="/comics/<%= comic.id %>"><%= comic.name %></a></li>
   <% end %>
 </ul>
 <h3>Writers</h3>
 <ul>
   <% @artist.writers.sorted.uniq.each do |writer| %>
-    <li><a href="/writers/<%=writer.id%>"><%= writer.name %></a></li>
+    <li><a href="/writers/<%= writer.id %>"><%= writer.name %></a></li>
   <% end %>
 </ul>
