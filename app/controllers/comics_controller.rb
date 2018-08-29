@@ -38,16 +38,20 @@ class ComicsController < ApplicationController
   end
 
   post '/comics' do
-    comic = Comic.new(name: params[:name], notes: params[:notes])
-    comic.writer = Writer.find_or_create_by(name: params[:writer])
-    comic.artist = Artist.find_or_create_by(name: params[:artist])
-    comic.user = current_user
-    if comic.save
-      flash[:message] = "Your comic has been created!"
-      redirect "/comics/#{comic.id}"
+    if logged_in?
+      comic = Comic.new(name: params[:name], notes: params[:notes])
+      comic.writer = Writer.find_or_create_by(name: params[:writer])
+      comic.artist = Artist.find_or_create_by(name: params[:artist])
+      comic.user = current_user
+      if comic.save
+        flash[:message] = "Your comic has been created!"
+        redirect "/comics/#{comic.id}"
+      else
+        flash[:message] = "Your comic was not created. Please try again."
+        redirect "/comics/new"
+      end
     else
-      flash[:message] = "Your comic was not created. Please try again."
-      redirect "/comics/new"
+      redirect '/'
     end
   end
 
