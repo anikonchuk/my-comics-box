@@ -1,5 +1,5 @@
 <h2>Edit Your Comic</h2>
-<% if flash.has?(:message) %>
+<% if flash[:message] %>
   <%= flash[:message] %>
 <% end %>
 <form action="/comics/<%= @comic.id %>" method="post">

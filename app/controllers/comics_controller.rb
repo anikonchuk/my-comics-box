@@ -1,6 +1,4 @@
-require 'rack-flash'
 class ComicsController < ApplicationController
-  use Rack::Flash
 
   get '/comics' do
     if logged_in?
