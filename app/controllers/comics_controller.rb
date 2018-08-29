@@ -55,4 +55,23 @@ class ComicsController < ApplicationController
     end
   end
 
+  patch '/comics/:id' do
+    comic = Comic.find_by_id(params[:id])
+    if current_user == comic.user
+      comic.name = params[:name]
+      comic.notes = params[:notes]
+      comic.writer = Writer.find_or_create_by(name: params[:writer])
+      comic.artist = Artist.find_or_create_by(name: params[:artist])
+      if comic.save
+        flash[:message] = "Your comic has been updated!"
+        redirect "/comics/#{comic.id}"
+      else
+        flash[:message] = "There was a problem updating your comic. Please try again."
+        redirect "/comics/#{comic.id}/edit"
+      end
+    else
+      redirect "/comics/#{comic.id}"
+    end
+  end
+
 end
