@@ -78,6 +78,7 @@ class ComicsController < ApplicationController
     comic = Comic.find_by_id(params[:id])
     if current_user == comic.user
       comic.destroy
+      flash[:message] = "Your comic has been deleted."
       redirect "/users/#{current_user.slug}"
     elsif logged_in?
       redirect "/comics/#{comic.id}"

@@ -1,3 +1,6 @@
+<% if flash[:message] %>
+<%= flash[:message] %>
+<% end %>
 <h2><%= @user.username %>'s Comics Box</h2>
 <p><a href="/comics/new">Add a new comic book!</a></p>
 <h3>Comics</h3>
