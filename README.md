@@ -4,7 +4,7 @@ Welcome to My Comics Box, a website where you can catalog your comic books. This
 
 ## Installation
 
-Download this repository.
+Download this repository. From the terminal (in the project directory), run ```bundle install``` to install gem dependencies. Run ```rake db:migrate```, then, run ```shotgun``` to start a web server and navigate to localhost:9393 in your web browser.
 
 
 ## Contributing
