@@ -2,7 +2,7 @@ class ArtistsController < ApplicationController
 
   get '/artists' do
     if logged_in?
-      @artists = Artist.all
+      @artists = Artist.sorted
       erb :'/artists/index'
     else
       redirect '/'

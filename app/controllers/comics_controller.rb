@@ -4,7 +4,7 @@ class ComicsController < ApplicationController
 
   get '/comics' do
     if logged_in?
-      @comics = Comic.all
+      @comics = Comic.sorted
       erb :'/comics/index'
     else
       redirect '/'

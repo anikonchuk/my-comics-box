@@ -1,6 +1,6 @@
 <h2>All Writers</h2>
 <ul>
-  <% @writers.sort_by {|obj| obj.name}.each do |writer| %>
+  <% @writers.each do |writer| %>
     <li><a href="/writers/<%=writer.id%>"><%= writer.name %></a></li>
   <% end %>
 </ul>

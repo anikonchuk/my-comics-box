@@ -2,7 +2,7 @@ class WritersController < ApplicationController
 
   get '/writers' do
     if logged_in?
-      @writers = Writer.all
+      @writers = Writer.sorted
       erb :'/writers/index'
     else
       redirect '/'
