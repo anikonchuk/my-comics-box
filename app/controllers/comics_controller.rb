@@ -28,6 +28,19 @@ class ComicsController < ApplicationController
     end
   end
 
+  get '/comics/:id/edit' do
+    if logged_in?
+      @comic = Comic.find_by_id(params[:id])
+      if current_user == @comic.user
+        erb :'/comics/edit'
+      else
+        redirect "/comics/#{params[:id]}"
+      end
+    else
+      redirect '/'
+    end
+  end
+
   post '/comics' do
     comic = Comic.new(name: params[:name], notes: params[:notes])
     comic.writer = Writer.find_or_create_by(name: params[:writer])
