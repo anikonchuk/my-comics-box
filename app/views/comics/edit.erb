@@ -1,0 +1,13 @@
+<h2>Edit Your Comic</h2>
+<form action="/comics/<%= @comic.id %>" method="post">
+  <input type="hidden" id="hidden" name="_method" value="patch">
+  <label for="name">Name:</label><br>
+  <input type="text" id="name" name="name" value="<%= @comic.name %>" required><br>
+  <label for="writer">Writer:</label><br>
+  <input type="text" id="writer" name="writer" value="<%= @comic.writer.name %>" required><br>
+  <label for="artist">Artist:</label><br>
+  <input type="text" id="artist" name="artist" value="<%= @comic.artist.name %>" required><br>
+  <label for="notes">Notes: (optional)</label><br>
+  <textarea name="notes" id="notes" rows="8" cols="80"><%= @comic.notes %></textarea><br>
+  <input type="submit" value="Edit Your Comic">
+</form>
