@@ -11,7 +11,10 @@
 <br>
 <% if current_user == @comic.user %>
 <p><a href="/comics/<%= @comic.id %>/edit">Edit This Comic</a></p>
-
+<form action="/comics/<%= @comic.id %>" method="post">
+  <input type="hidden" id="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete This Comic">
+</form>
 <br>
 <% end %>
 <p><em>This comic is in <a href="/users/<%= @comic.user.slug %>"><%= @comic.user.username %></a>'s Comics Box.</em></p>
