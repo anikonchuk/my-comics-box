@@ -27,13 +27,11 @@ class ComicsController < ApplicationController
   end
 
   get '/comics/:id/edit' do
-    if logged_in?
-      @comic = Comic.find_by_id(params[:id])
-      if current_user == @comic.user
-        erb :'/comics/edit'
-      else
-        redirect "/comics/#{params[:id]}"
-      end
+    @comic = Comic.find_by_id(params[:id])
+    if current_user == @comic.user
+      erb :'/comics/edit'
+    elsif logged_in?
+      redirect "/comics/#{params[:id]}"
     else
       redirect '/'
     end
