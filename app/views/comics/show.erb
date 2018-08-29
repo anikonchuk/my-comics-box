@@ -9,4 +9,9 @@
 <h4>Notes</h4>
 <p><%= @comic.notes %></p>
 <br>
+<% if current_user == @comic.user %>
+<p><a href="/comics/<%= @comic.id %>/edit">Edit This Comic</a></p>
+
+<br>
+<% end %>
 <p><em>This comic is in <a href="/users/<%= @comic.user.slug %>"><%= @comic.user.username %></a>'s Comics Box.</em></p>
