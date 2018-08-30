@@ -4,7 +4,7 @@ Welcome to MyComicsBox, a website where you can catalog your comic books and sha
 
 ## Installation
 
-Download this repository. From the terminal (in the project directory), run ```bundle install``` to install gem dependencies. Run ```shotgun``` to start a web server and navigate to localhost:9393 in your web browser. 
+Download this repository. From the terminal (in the project directory), run ```bundle install``` to install gem dependencies. Run ```shotgun``` to start a web server and navigate to localhost:9393 in your web browser.
 
 ## Contributing
 
@@ -12,4 +12,4 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/anikon
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+The code is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
