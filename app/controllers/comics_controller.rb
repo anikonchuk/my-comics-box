@@ -38,41 +38,34 @@ class ComicsController < ApplicationController
   end
 
   post '/comics' do
-    if logged_in?
-      comic = Comic.new(name: params[:name], notes: params[:notes])
-      comic.writer = Writer.find_or_create_by(name: params[:writer])
-      comic.artist = Artist.find_or_create_by(name: params[:artist])
-      comic.user = current_user
-      if comic.save
-        flash[:message] = "Your comic has been created!"
-        redirect "/comics/#{comic.id}"
-      else
-        flash[:message] = "Your comic was not created. Please try again."
-        redirect "/comics/new"
-      end
+    redirect_if_not_logged_in
+    comic = Comic.new(name: params[:name], notes: params[:notes])
+    # comic = current_user.comics.build(name: params[:name], notes: params[:notes])
+    comic.writer = Writer.find_or_create_by(name: params[:writer])
+    comic.artist = Artist.find_or_create_by(name: params[:artist])
+    comic.user = current_user
+    if comic.save
+      flash[:message] = "Your comic has been created!"
+      redirect "/comics/#{comic.id}"
     else
-      redirect '/'
+      flash[:message] = "Your comic was not created. Please try again."
+      redirect "/comics/new"
     end
   end
 
   patch '/comics/:id' do
-    comic = Comic.find_by_id(params[:id])
-    if current_user == comic.user
-      comic.name = params[:name]
-      comic.notes = params[:notes]
-      comic.writer = Writer.find_or_create_by(name: params[:writer])
-      comic.artist = Artist.find_or_create_by(name: params[:artist])
-      if comic.save
-        flash[:message] = "Your comic has been updated!"
-        redirect "/comics/#{comic.id}"
-      else
-        flash[:message] = "There was a problem updating your comic. Please try again."
-        redirect "/comics/#{comic.id}/edit"
-      end
-    elsif logged_in?
-      redirect "/comics/#{comic.id}"
+    @comic = Comic.find_by_id(params[:id])
+    redirect_if_not_authorized
+    @comic.name = params[:name]
+    @comic.notes = params[:notes]
+    @comic.writer = Writer.find_or_create_by(name: params[:writer])
+    @comic.artist = Artist.find_or_create_by(name: params[:artist])
+    if @comic.save
+      flash[:message] = "Your comic has been updated!"
+      redirect "/comics/#{@comic.id}"
     else
-      redirect '/'
+      flash[:message] = "There was a problem updating your comic. Please try again."
+      redirect "/comics/#{@comic.id}/edit"
     end
   end
 
